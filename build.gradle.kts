@@ -1,5 +1,3 @@
-import java.net.URI
-
 plugins {
     kotlin("jvm") version "1.8.21"
     id("com.github.johnrengelman.shadow") version "7.1.2"
@@ -12,6 +10,9 @@ java {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
+
+val repoUser = project.properties["repoUser"] as String
+val repoPassword = project.properties["repoPassword"] as String
 
 val mcVersion = "1.20.1"
 val kotlinVersion = kotlin.coreLibrariesVersion
@@ -81,7 +82,7 @@ tasks {
                     val mavenUrl = "https://repo.blugon.kr/repository/maven-" +
                             if(project.version.toString().endsWith("SNAPSHOT")) "snapshots/"
                             else "releases/"
-                    url = URI(mavenUrl)
+                    url = uri(mavenUrl)
                     credentials {
                         username = repoUser
                         password = repoPassword
