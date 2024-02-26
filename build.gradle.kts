@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.9.22"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("org.jetbrains.dokka") version "1.5.0"
     `maven-publish`
@@ -14,17 +14,19 @@ java {
 val repoUser = project.properties["repoUser"] as String
 val repoPassword = project.properties["repoPassword"] as String
 
-val mcVersion = "1.20.1"
+val mcVersion = "1.20.4"
 val kotlinVersion = kotlin.coreLibrariesVersion
 
 repositories {
     mavenCentral()
     maven("https://papermc.io/repo/repository/maven-public/")
+//    maven("https://repo.blugon.kr/repository/maven-public/")
 }
 
 dependencies {
     compileOnly(kotlin("stdlib"))
     compileOnly("io.papermc.paper:paper-api:${mcVersion}-R0.1-SNAPSHOT")
+//    implementation("kr.blugon:plugin-utils:1.2.1")
 }
 
 extra.apply {
